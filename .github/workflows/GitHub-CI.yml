@@ -69,3 +69,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  #WebPage speed
+  webPageSpeed:
+    name: Code Quality test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Web Page Speed
+      uses: jakepartusch/psi-action@v1
+      id: psi
+      with:
+        url: "https://procesor2017.github.io/gitHubWorkShop/"
+        threshold: 70
+        strategy: mobile
