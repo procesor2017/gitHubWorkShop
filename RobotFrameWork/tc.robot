@@ -1,10 +1,11 @@
-***Settings***
-***Settings***
+*** Settings ***
 Library             SeleniumLibrary
-Library             RequestLibrary
+Library             Collections
+Library             RequestsLibrary
 Library             JSONLibrary
-Resource            variables.robot
+Resource            RF_File/variables.robot
+Resource            RF_File/keywords.robot
 
-***Test Cases***
+*** Test Cases ***
 Find Api
     API Connect

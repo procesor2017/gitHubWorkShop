@@ -1,13 +1,13 @@
-***Settings***
+*** Settings ***
 Library             SeleniumLibrary
-Library             RequestLibrary
-Library             JSONLibrary
+Library             Collections
+Library             RequestsLibrary
 Resource            variables.robot
 
-***Keywords***
+*** Keywords ***
 API Connect
-    create session      my_session              ${URL_API}
-    ${headers}=         Create Dictionary       Accept=application/json     Content-Type=application/json   charset=utf-8
+    create session      api              ${URL_API}
+    ${response}         Get Request     api         /
+    Status Should be    200     ${response}
 
-    ${response}=        Get Request             my_session                  my-endpoint                     headers=${headers}
-	Log to console      ${response.status_code}
+
