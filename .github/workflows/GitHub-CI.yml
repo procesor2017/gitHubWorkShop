@@ -82,41 +82,6 @@ jobs:
         uses: actions/checkout@v2
       - name: running Sitespeed container with options and arguments
         run: | 
-          docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:14.4.0-plus1 https://procesor2017.github.io/gitHubWorkShop/ \
-          --budget.configPath ${{ github.workspace }}/.github/budget.json -n 1 
-
-    webPageSpeed:
-    needs: [loadTest]
-    name: Speed.io1
-    runs-on: ubuntu-latest
-    steps:
-      - name: code checkout
-        uses: actions/checkout@v2
-      - name: running Sitespeed container with options and arguments
-        run: | 
-          docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:14.4.0-plus1 https://procesor2017.github.io/gitHubWorkShop/ \
-          --budget.configPath /.github/budget.json -n 1 
-
-    webPageSpeed:
-    needs: [loadTest]
-    name: Speed.io2
-    runs-on: ubuntu-latest
-    steps:
-      - name: code checkout
-        uses: actions/checkout@v2
-      - name: running Sitespeed container with options and arguments
-        run: | 
-          docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:14.4.0-plus1 https://procesor2017.github.io/gitHubWorkShop/ \
-          --budget.configPath ./.github/budget.json -n 1 
-
-    webPageSpeed:
-    needs: [loadTest]
-    name: Speed.io2
-    runs-on: ubuntu-latest
-    steps:
-      - name: code checkout
-        uses: actions/checkout@v2
-      - name: running Sitespeed container with options and arguments
-        run: | 
-          docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:14.4.0-plus1 https://procesor2017.github.io/gitHubWorkShop/ \
-          --budget.configPath ${{ github.workspace }} -n 1 
+           docker run --cap-add=NET_ADMIN --rm  -e REPLAY=true -e LATENCY=100 \
+           sitespeedio/sitespeed.io https://procesor2017.github.io/gitHubWorkShop/ \
+           -n 1 -b chrome
