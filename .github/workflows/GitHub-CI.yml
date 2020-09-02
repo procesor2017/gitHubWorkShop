@@ -37,5 +37,7 @@ jobs:
       - name: Docker for RF
         run: |
           docker run \
+          -v ${{ github.workspace }}/RobotFrameWork:/opt/robotframework/reports:Z \
+          -v ${{ github.workspace }}/RobotFrameWork:/opt/robotframework/tests:Z \
           --user=1001:1001 \
           ppodgorsek/robot-framework:latest
