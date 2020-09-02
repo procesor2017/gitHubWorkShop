@@ -27,16 +27,15 @@ jobs:
           python pip install robotframework-requests 
       - name: Start test
         run: | 
-          python -m robot -i api robotframework/tc.robot
+          python3 -m robot -i api robotframework/tc.robot
   robotWebTest:
     name: robotWebTest
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Robot Framework
-        uses: joonvena/robotframework-docker-action@v0.1
-        env:
-          BROWSER: chrome
-          ROBOT_TESTS_DIR: ${{ github.workspace }}/RobotFrameWork
-          ROBOT_REPORTS_DIR: ${{ github.workspace }}/RobotFrameWork
+      - name: Docker for RF
+        run:
+            docker run \
+            -e ROBOT_TESTS_DIR = "/github/workspace/robot-tests"
+            -e ROBOT_REPORTS_DIR = "/github/workspace/robot-reports"
+            -e BROWSER=chrome \
+            ppodgorsek/robot-framework:latest
