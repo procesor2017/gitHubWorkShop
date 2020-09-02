@@ -1,122 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.8.1 on win32)" generated="20200902 07:34:44.031" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.8.1 on win32)" generated="20200902 07:51:13.557" rpa="false">
 <suite id="s1" name="Tc" source="C:\Users\honzik\documents\projects\githubworkshop\robotframework\tc.robot">
-<test id="s1-t1" name="Find Api">
-<kw name="API Connect" library="keywords">
-<kw name="Create Session" library="RequestsLibrary">
-<doc>Create Session: create a HTTP session to a server</doc>
+<test id="s1-t1" name="LogIn to webPage">
+<kw name="Start browser" library="keywords">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
 <arguments>
-<arg>api</arg>
-<arg>${URL_API}</arg>
+<arg>${URL_WEB}</arg>
+<arg>${BROWSER}</arg>
 </arguments>
-<msg timestamp="20200902 07:34:44.460" level="INFO">Creating Session using : alias=api, url=https://procesor2017.github.io/gitHubWorkShop/under, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20200902 07:34:44.460" endtime="20200902 07:34:44.460"></status>
+<msg timestamp="20200902 07:51:13.976" level="INFO">Opening browser 'Chrome' to base url 'https://procesor2017.github.io/gitHubWorkShop/'.</msg>
+<status status="PASS" starttime="20200902 07:51:13.975" endtime="20200902 07:51:17.297"></status>
 </kw>
-<kw name="Get Request" library="RequestsLibrary">
-<doc>Send a GET request on the session object found using the
-given `alias`</doc>
+<status status="PASS" starttime="20200902 07:51:13.975" endtime="20200902 07:51:17.297"></status>
+</kw>
+<kw name="Input logIn and password" library="keywords">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
 <arguments>
-<arg>api</arg>
-<arg>/api.json</arg>
+<arg>${INPUT_USER_NAME}</arg>
 </arguments>
-<assign>
-<var>${response}</var>
-</assign>
-<msg timestamp="20200902 07:34:44.460" level="INFO">GET Request using : uri=/api.json, params=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
-data=None 
-json=None</msg>
-<msg timestamp="20200902 07:34:44.926" level="INFO">c:\users\honzik\appdata\local\programs\python\python38-32\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'procesor2017.github.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20200902 07:34:44.927" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200902 07:34:44.460" endtime="20200902 07:34:44.927"></status>
+<status status="PASS" starttime="20200902 07:51:17.298" endtime="20200902 07:51:17.321"></status>
 </kw>
-<kw name="Status Should Be" library="RequestsLibrary">
-<doc>Fails if response status code is different than the expected.</doc>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
 <arguments>
-<arg>200</arg>
-<arg>${response}</arg>
+<arg>${INPUT_USER_NAME}</arg>
+<arg>${USER_NAME}</arg>
 </arguments>
-<status status="PASS" starttime="20200902 07:34:44.927" endtime="20200902 07:34:44.927"></status>
+<msg timestamp="20200902 07:51:17.321" level="INFO">Typing text 'Batman' into text field '//*[@name="user"]'.</msg>
+<status status="PASS" starttime="20200902 07:51:17.321" endtime="20200902 07:51:17.406"></status>
 </kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
 <arguments>
-<arg>${response.content}</arg>
+<arg>${INPUT_PASSWORD}</arg>
 </arguments>
-<msg timestamp="20200902 07:34:44.927" level="INFO">${response.content} = {
-    "author": "Jan Egermaier",
-    "true":  "Star trek &gt; New Star wars",
-    "Best Super heroe" : "Batman"
-  }
-  </msg>
-<status status="PASS" starttime="20200902 07:34:44.927" endtime="20200902 07:34:44.927"></status>
+<status status="PASS" starttime="20200902 07:51:17.406" endtime="20200902 07:51:17.424"></status>
 </kw>
-<status status="PASS" starttime="20200902 07:34:44.459" endtime="20200902 07:34:44.927"></status>
-</kw>
-<kw name="Get Best Heroes" library="keywords">
-<kw name="To Json" library="RequestsLibrary">
-<doc>Convert a string to a JSON object</doc>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
 <arguments>
-<arg>${response.content}</arg>
+<arg>${INPUT_PASSWORD}</arg>
+<arg>${PASSWORD}</arg>
 </arguments>
-<assign>
-<var>${jsonResponse}</var>
-</assign>
-<msg timestamp="20200902 07:34:44.928" level="INFO">To JSON using : content={
-    "author": "Jan Egermaier",
-    "true":  "Star trek &gt; New Star wars",
-    "Best Super heroe" : "Batman"
-  }
-   </msg>
-<msg timestamp="20200902 07:34:44.928" level="INFO">To JSON using : pretty_print=False </msg>
-<msg timestamp="20200902 07:34:44.928" level="INFO">${jsonResponse} = {'author': 'Jan Egermaier', 'true': 'Star trek &gt; New Star wars', 'Best Super heroe': 'Batman'}</msg>
-<status status="PASS" starttime="20200902 07:34:44.928" endtime="20200902 07:34:44.928"></status>
+<msg timestamp="20200902 07:51:17.424" level="INFO">Typing text 'isAwesome' into text field '//*[@name="password"]'.</msg>
+<status status="PASS" starttime="20200902 07:51:17.424" endtime="20200902 07:51:17.590"></status>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20200902 07:51:17.297" endtime="20200902 07:51:17.590"></status>
+</kw>
+<kw name="Click on logIn" library="keywords">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
 <arguments>
-<arg>${jsonResponse}</arg>
+<arg>${LOGIN}</arg>
 </arguments>
-<status status="PASS" starttime="20200902 07:34:44.929" endtime="20200902 07:34:44.929"></status>
+<status status="PASS" starttime="20200902 07:51:17.591" endtime="20200902 07:51:17.608"></status>
 </kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
 <arguments>
-<arg>${jsonResponse['Best Super heroe']}</arg>
+<arg>${LOGIN}</arg>
 </arguments>
-<assign>
-<var>${heroes}</var>
-</assign>
-<msg timestamp="20200902 07:34:44.929" level="INFO">${heroes} = Batman</msg>
-<status status="PASS" starttime="20200902 07:34:44.929" endtime="20200902 07:34:44.929"></status>
+<msg timestamp="20200902 07:51:17.608" level="INFO">Clicking element '//*[@class='login']/form/input'.</msg>
+<status status="PASS" starttime="20200902 07:51:17.608" endtime="20200902 07:51:17.882"></status>
 </kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${heroes}</arg>
-</arguments>
-<msg timestamp="20200902 07:34:44.929" level="INFO">${heroes} = Batman</msg>
-<status status="PASS" starttime="20200902 07:34:44.929" endtime="20200902 07:34:44.930"></status>
+<status status="PASS" starttime="20200902 07:51:17.591" endtime="20200902 07:51:17.882"></status>
 </kw>
-<status status="PASS" starttime="20200902 07:34:44.928" endtime="20200902 07:34:44.930"></status>
-</kw>
-<kw name="Heroes exists" library="keywords">
-<arguments>
-<arg>Batman</arg>
-</arguments>
-<kw name="Should Be True" library="BuiltIn">
-<doc>Fails if the given condition is not true.</doc>
-<arguments>
-<arg>"""${nameOfHeroes}""" == """${heroes}"""</arg>
-</arguments>
-<status status="PASS" starttime="20200902 07:34:44.930" endtime="20200902 07:34:44.930"></status>
-</kw>
-<status status="PASS" starttime="20200902 07:34:44.930" endtime="20200902 07:34:44.931"></status>
-</kw>
-<status status="PASS" starttime="20200902 07:34:44.459" endtime="20200902 07:34:44.931" critical="yes"></status>
+<tags>
+<tag>TC02</tag>
+<tag>WEB</tag>
+</tags>
+<status status="PASS" starttime="20200902 07:51:13.974" endtime="20200902 07:51:17.883" critical="yes"></status>
 </test>
-<status status="PASS" starttime="20200902 07:34:44.032" endtime="20200902 07:34:44.932"></status>
+<status status="PASS" starttime="20200902 07:51:13.558" endtime="20200902 07:51:17.884"></status>
 </suite>
 <statistics>
 <total>
@@ -124,6 +81,8 @@ json=None</msg>
 <stat pass="1" fail="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0">TC02</stat>
+<stat pass="1" fail="0">WEB</stat>
 </tag>
 <suite>
 <stat pass="1" fail="0" id="s1" name="Tc">Tc</stat>
