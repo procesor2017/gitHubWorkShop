@@ -2,7 +2,6 @@
 Library             SeleniumLibrary
 Library             Collections
 Library             RequestsLibrary
-Library             JSONLibrary
 Resource            variables.robot
 
 *** Keywords ***
