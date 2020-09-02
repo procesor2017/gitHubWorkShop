@@ -36,11 +36,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Docker for RF
         uses: docker://ppodgorsek/robot-framework
-        with: |
-            docker run \
-            -v :/github/workspace/RobotFrameWork \
-            -v :/github/workspace/RobotFrameWork \
-            -e ROBOT_TESTS_DIR = "/github/workspace/RobotFrameWork" \
-            -e ROBOT_REPORTS_DIR = "/github/workspace/RobotFrameWork" \
-            -e BROWSER=chrome \
-            ppodgorsek/robot-framework:latest
+          enviroment: |
+            BROWSER = 'chrome'
+            ROBOT_TESTS_DIR = "${{ github.workspace }}/RobotFrameWork"
+            ROBOT_REPORTS_DIR = "${{ github.workspace }}/RobotFrameWork"
