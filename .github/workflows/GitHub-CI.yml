@@ -85,3 +85,18 @@ jobs:
            docker run --cap-add=NET_ADMIN --rm  -e REPLAY=true -e LATENCY=100 \
            sitespeedio/sitespeed.io https://procesor2017.github.io/gitHubWorkShop/ \
            -n 1 -b chrome
+
+  #Postman RUN
+  postmanRun:
+    name: Postman run [NewMan CLI]
+    runs-on: ubuntu-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          npm install
+          npm install -g newman
+      - name: Start test
+        run: newman run ${{ github.workspace }}/test/testapi.json
+
