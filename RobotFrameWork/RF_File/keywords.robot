@@ -36,3 +36,8 @@ Input logIn and password
 Click on logIn
     Wait until element is visible       ${LOGIN}
     Click element                       ${LOGIN}
+
+Validate Klingon language
+    Wait until element is visible       ${KLINGON} 
+    ${isKlingon}=                       Get text                ${KLINGON}
+    Should be true                      """${isKlingon}""" == """${KLINGON_HI}""" 

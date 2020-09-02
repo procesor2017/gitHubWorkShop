@@ -18,3 +18,4 @@ LogIn to webPage
     Start browser
     Input logIn and password
     Click on logIn
+    Validate Klingon language
