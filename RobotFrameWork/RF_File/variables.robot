@@ -1,2 +1,2 @@
 *** Variables ***
-${URL_API}             https://github.com/procesor2017/gitHubWorkShop
+${URL_API}              https://procesor2017.github.io/gitHubWorkShop/under/api.html

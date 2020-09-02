@@ -9,3 +9,5 @@ Resource            RF_File/keywords.robot
 *** Test Cases ***
 Find Api
     API Connect
+    Get Best Heroes
+    Heroes exists           Batman
