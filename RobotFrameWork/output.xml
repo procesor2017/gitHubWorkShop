@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.8.1 on win32)" generated="20200902 07:10:35.829" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.8.1 on win32)" generated="20200902 07:14:57.652" rpa="false">
 <suite id="s1" name="Tc" source="C:\Users\honzik\documents\projects\githubworkshop\robotframework\tc.robot">
 <test id="s1-t1" name="Find Api">
 <kw name="API Connect" library="keywords">
@@ -9,8 +9,8 @@
 <arg>api</arg>
 <arg>${URL_API}</arg>
 </arguments>
-<msg timestamp="20200902 07:10:36.254" level="INFO">Creating Session using : alias=api, url=https://procesor2017.github.io/gitHubWorkShop/under/api.json, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20200902 07:10:36.254" endtime="20200902 07:10:36.254"></status>
+<msg timestamp="20200902 07:14:58.067" level="INFO">Creating Session using : alias=api, url=https://procesor2017.github.io/gitHubWorkShop/under/api.html, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200902 07:14:58.067" endtime="20200902 07:14:58.067"></status>
 </kw>
 <kw name="Get Request" library="RequestsLibrary">
 <doc>Send a GET request on the session object found using the
@@ -22,14 +22,14 @@ given `alias`</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20200902 07:10:36.255" level="INFO">GET Request using : uri=/, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20200902 07:14:58.068" level="INFO">GET Request using : uri=/, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
 data=None 
 json=None</msg>
-<msg timestamp="20200902 07:10:36.456" level="INFO">c:\users\honzik\appdata\local\programs\python\python38-32\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'procesor2017.github.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+<msg timestamp="20200902 07:14:58.158" level="INFO">c:\users\honzik\appdata\local\programs\python\python38-32\lib\site-packages\urllib3\connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'procesor2017.github.io'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20200902 07:10:36.456" level="INFO">${response} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20200902 07:10:36.254" endtime="20200902 07:10:36.456"></status>
+<msg timestamp="20200902 07:14:58.158" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200902 07:14:58.068" endtime="20200902 07:14:58.158"></status>
 </kw>
 <kw name="Status Should Be" library="RequestsLibrary">
 <doc>Fails if response status code is different than the expected.</doc>
@@ -37,14 +37,14 @@ json=None</msg>
 <arg>200</arg>
 <arg>${response}</arg>
 </arguments>
-<msg timestamp="20200902 07:10:36.470" level="FAIL">Url: https://procesor2017.github.io/gitHubWorkShop/under/api.json/ Expected status: 404 != 200</msg>
-<status status="FAIL" starttime="20200902 07:10:36.456" endtime="20200902 07:10:36.470"></status>
+<msg timestamp="20200902 07:14:58.159" level="FAIL">Url: https://procesor2017.github.io/gitHubWorkShop/under/api.html/ Expected status: 404 != 200</msg>
+<status status="FAIL" starttime="20200902 07:14:58.158" endtime="20200902 07:14:58.159"></status>
 </kw>
-<status status="FAIL" starttime="20200902 07:10:36.254" endtime="20200902 07:10:36.470"></status>
+<status status="FAIL" starttime="20200902 07:14:58.067" endtime="20200902 07:14:58.159"></status>
 </kw>
-<status status="FAIL" starttime="20200902 07:10:36.253" endtime="20200902 07:10:36.471" critical="yes">Url: https://procesor2017.github.io/gitHubWorkShop/under/api.json/ Expected status: 404 != 200</status>
+<status status="FAIL" starttime="20200902 07:14:58.066" endtime="20200902 07:14:58.160" critical="yes">Url: https://procesor2017.github.io/gitHubWorkShop/under/api.html/ Expected status: 404 != 200</status>
 </test>
-<status status="FAIL" starttime="20200902 07:10:35.831" endtime="20200902 07:10:36.472"></status>
+<status status="FAIL" starttime="20200902 07:14:57.653" endtime="20200902 07:14:58.161"></status>
 </suite>
 <statistics>
 <total>
