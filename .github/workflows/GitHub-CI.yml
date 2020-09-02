@@ -37,7 +37,9 @@ jobs:
       - name: Docker for RF
         run: |
             docker run \
-            -e ROBOT_TESTS_DIR = "/github/workspace/RobotFrameWork"
-            -e ROBOT_REPORTS_DIR = "/github/workspace/RobotFrameWork"
+            -v :/github/workspace/RobotFrameWork \
+            -v :/github/workspace/RobotFrameWork \
+            -e ROBOT_TESTS_DIR = "/github/workspace/RobotFrameWork" \
+            -e ROBOT_REPORTS_DIR = "/github/workspace/RobotFrameWork" \
             -e BROWSER=chrome \
             ppodgorsek/robot-framework:latest
