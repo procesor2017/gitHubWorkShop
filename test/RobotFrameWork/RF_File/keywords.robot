@@ -15,7 +15,7 @@ API Connect
 Get Best Heroes
     ${jsonResponse}         To Json             ${response.content}
     log to console          ${jsonResponse}
-    ${heroes}               Set variable        ${jsonResponse['Best Super heroe']}
+    ${heroes}               Set variable        ${jsonResponse['Best Super hero']}
     Set test variable       ${heroes}     
 
 Heroes exists
