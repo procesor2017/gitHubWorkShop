@@ -36,9 +36,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Docker for RF
         run: |
-          docker run \
+          docker run --shm-size=1g \
           -v ${{ github.workspace }}/RobotFrameWork:/opt/robotframework/reports:Z \
           -v ${{ github.workspace }}/RobotFrameWork:/opt/robotframework/tests:Z \
-          -e BROWSER=chrome
+          -e BROWSER=chrome \
           --user=1001:1001 \
           ppodgorsek/robot-framework:latest
