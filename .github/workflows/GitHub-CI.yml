@@ -1,0 +1,32 @@
+name: GitHub-CI
+on: 
+  [push]
+
+# Jednoduchý příklad pro vypsání Ahoj :-)
+jobs:
+  build:
+    name: Vítej
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ahoj
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: 'Batman'
+        id: ahoj
+  # Startujeme RF test na API = Ukázka instalace pythonu a další závislostí.
+  RobotTest:
+    name: RobotTest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+          pip install robotframework-requests 
+      - name: Start test
+        run: python3 -m robot robotframework/tc.robot
+
+     
+     
