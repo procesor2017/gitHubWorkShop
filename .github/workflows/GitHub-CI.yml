@@ -59,7 +59,7 @@ jobs:
   # Code quality 
   codeQuality:
     name: Code Quality test
-    runs-on: ubuntu.latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
