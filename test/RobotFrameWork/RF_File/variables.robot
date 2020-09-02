@@ -1,7 +1,7 @@
 *** Variables ***
 ${URL_API}              https://procesor2017.github.io/gitHubWorkShop/under
 ${URL_WEB}              https://procesor2017.github.io/gitHubWorkShop/
-${BROWSER}              Chrome
+${BROWSER}              %{BROWSER}
 
 #------------------------------ Input ------------------------------
 ${INPUT_USER_NAME}      //*[@name="user"]
