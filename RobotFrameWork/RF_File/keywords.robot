@@ -8,15 +8,14 @@ Resource            variables.robot
 *** Keywords ***
 API Connect
     create session          api                 ${URL_API}
-    ${response}             Get Request         api             /
+    ${response}             Get Request         api       /api.json
     Status Should be        200                 ${response}
     Set test variable       ${response.content}
-    Log to console          ${response.content} 
 
 Get Best Heroes
-    Log to console          ${response.content} 
     ${jsonResponse}         To Json             ${response.content}
-    ${heroes}               Set variables       ${jsonResponse[Best Super heroe]}
+    log to console          ${jsonResponse}
+    ${heroes}               Set variable       ${jsonResponse['Best Super heroe']}
     Set test variable       ${heroes}     
 
 Heroes exists
