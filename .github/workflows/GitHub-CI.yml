@@ -22,18 +22,20 @@ jobs:
       - name: Install requirements
         run: |
           python -m pip install --upgrade pip
-          python pip install robotframework
-          python pip install robotframework-seleniumlibrary
-          python pip install robotframework-requests 
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+          pip install robotframework-requests 
       - name: Start test
         run: | 
           python3 -m robot -i api robotframework/tc.robot
+  # Docker and robot framework
   robotWebTest:
     name: robotWebTest
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Docker for RF
-        run:
+        run: |
             docker run \
             -e ROBOT_TESTS_DIR = "/github/workspace/robot-tests"
             -e ROBOT_REPORTS_DIR = "/github/workspace/robot-reports"
