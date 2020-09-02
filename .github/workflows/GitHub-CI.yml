@@ -13,6 +13,7 @@ jobs:
         with:
           who-to-greet: 'Batman'
         id: ahoj
+
   # Startujeme RF test na API = Ukázka instalace pythonu a dalších závislostí.
   robotApiTest:
     name: robotApiTest
@@ -28,7 +29,8 @@ jobs:
       - name: Start test
         run: | 
           python -m robot -i api test/RobotFrameWork/tc.robot
-  # Docker and robot framework --RobotFrameWork
+
+  # Docker and robot framework =Využíté Dockeru
   robotWebTest:
     name: robotWebTest
     runs-on: ubuntu-latest
@@ -43,7 +45,7 @@ jobs:
           --user=1001:1001 \
           ppodgorsek/robot-framework:latest
           
-  #K6 Load Test
+  #K6 Load Test = Využítí již před přiravených actions
   loadTest:
     name: k6 Load Test
     runs-on: ubuntu-latest
@@ -56,29 +58,29 @@ jobs:
           filename: ${{ github.workspace }}/test/k6/loadtest.js
           flags: --vus 50 --duration 10s
   
-  # Code quality 
+  # Code quality = Ukázka využítí secrets
   codeQuality:
     name: Code Quality test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  #WebPage speed
+  #WebPage speed = Spouští se pouze pokud passne loadTest
   webPageSpeed:
-    name: Code Quality test
+    needs: [loadTest]
+    name: Speed.io
     runs-on: ubuntu-latest
     steps:
-    - name: Web Page Speed
-      uses: jakepartusch/psi-action@v1
-      id: psi
-      with:
-        url: "https://procesor2017.github.io/gitHubWorkShop/"
-        threshold: 70
-        strategy: mobile
+      - name: code checkout
+        uses: actions/checkout@v2
+      - name: running Sitespeed container with options and arguments
+        run: | 
+          docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:13.0.3-action https://procesor2017.github.io/gitHubWorkShop/ \
+          --budget.configPath .github/budget.json -n 1 
