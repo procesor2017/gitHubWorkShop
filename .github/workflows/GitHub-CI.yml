@@ -44,7 +44,7 @@ jobs:
           ppodgorsek/robot-framework:latest
           
   #K6 Load Test
-  LoadTest:
+  loadTest:
     name: k6 Load Test
     runs-on: ubuntu-latest
     steps:
@@ -55,5 +55,17 @@ jobs:
         with:
           filename: ${{ github.workspace }}/test/k6/loadtest.js
           flags: --vus 50 --duration 10s
-
-       
+  
+  # Code quality 
+  codeQuality:
+    name: Code Quality test
+    runs-on: ubuntu.latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
