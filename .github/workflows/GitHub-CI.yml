@@ -22,21 +22,21 @@ jobs:
       - name: Install requirements
         run: |
           python3 -m pip install --upgrade pip
-          pip install robotframework
-          pip install robotframework-seleniumlibrary
-          pip install robotframework-requests 
+          python3 pip install robotframework
+          python3 pip install robotframework-seleniumlibrary
+          python3 pip install robotframework-requests 
       - name: Start test
         run: | 
-          python3 -m robot robotframework/tc.robot
+          python3 -m robot -i tc01 robotframework/tc.robot
   robotWebTest:
     name: robotWebTest
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/Checkout@v2
+        uses: actions/checkout@v2
       - name: Robot Framework
-        uses: joonvena/robotframework-docker-action@v1
+        uses: joonvena/robotframework-docker-action@v0.1
         env:
           BROWSER: chrome
-          ROBOT_TEST_DIR: ./RobotFrameWork
-          ROBOT_REPORTS_DIR: ./RobotFrameWork
+          ROBOT_TESTS_DIR: ${{ github.workspace }}/robotframework
+          ROBOT_REPORTS_DIR: ${{ github.workspace }}/robotframework
