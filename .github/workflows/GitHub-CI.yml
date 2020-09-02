@@ -53,7 +53,7 @@ jobs:
       - name: Run k6 local test
         uses: k6io/action@v0.1
         with:
-          filename: ${{ github.workspace }}/test/k6/my-load-test.js
+          filename: ${{ github.workspace }}/test/k6/loadtest.js
           flags: --vus 50 --duration 10s
 
        
