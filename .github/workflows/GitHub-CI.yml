@@ -27,7 +27,7 @@ jobs:
           pip install robotframework-requests 
       - name: Start test
         run: | 
-          python -m robot -i api /test/RobotFrameWork/tc.robot
+          python -m robot -i api test/RobotFrameWork/tc.robot
   # Docker and robot framework --RobotFrameWork
   robotWebTest:
     name: robotWebTest
