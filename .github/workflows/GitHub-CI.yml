@@ -13,7 +13,7 @@ jobs:
         with:
           who-to-greet: 'Batman'
         id: ahoj
-  # Startujeme RF test na API = Ukázka instalace pythonu a další závislostí.
+  # Startujeme RF test na API = Ukázka instalace pythonu a dalších závislostí.
   robotApiTest:
     name: robotApiTest
     runs-on: ubuntu-latest
@@ -27,8 +27,8 @@ jobs:
           pip install robotframework-requests 
       - name: Start test
         run: | 
-          python -m robot -i api robotframework/tc.robot
-  # Docker and robot framework
+          python -m robot -i api RobotFrameWork/tc.robot
+  # Docker and robot framework --RobotFrameWork
   robotWebTest:
     name: robotWebTest
     runs-on: ubuntu-latest
@@ -37,7 +37,7 @@ jobs:
       - name: Docker for RF
         run: |
             docker run \
-            -e ROBOT_TESTS_DIR = "/github/workspace/robot-tests"
-            -e ROBOT_REPORTS_DIR = "/github/workspace/robot-reports"
+            -e ROBOT_TESTS_DIR = "/github/workspace/RobotFrameWork"
+            -e ROBOT_REPORTS_DIR = "/github/workspace/RobotFrameWork"
             -e BROWSER=chrome \
             ppodgorsek/robot-framework:latest
