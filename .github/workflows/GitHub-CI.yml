@@ -27,7 +27,7 @@ jobs:
           pip install robotframework-requests 
       - name: Start test
         run: | 
-          python -m robot -i api RobotFrameWork/tc.robot
+          python -m robot -i api /test/RobotFrameWork/tc.robot
   # Docker and robot framework --RobotFrameWork
   robotWebTest:
     name: robotWebTest
@@ -37,8 +37,23 @@ jobs:
       - name: Docker for RF
         run: |
           docker run --shm-size=1g \
-          -v ${{ github.workspace }}/RobotFrameWork:/opt/robotframework/reports:Z \
-          -v ${{ github.workspace }}/RobotFrameWork:/opt/robotframework/tests:Z \
+          -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/reports:Z \
+          -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/tests:Z \
           -e BROWSER=chrome \
           --user=1001:1001 \
           ppodgorsek/robot-framework:latest
+          
+  #K6 Load Test
+  LoadTest:
+    name: k6 Load Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run k6 local test
+        uses: k6io/action@v0.1
+        with:
+          filename: ${{ github.workspace }}/test/k6/my-load-test.js
+          flags: --vus 50 --duration 10s
+
+       
