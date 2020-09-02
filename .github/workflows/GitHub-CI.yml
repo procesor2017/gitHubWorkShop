@@ -35,10 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Docker for RF
-      - uses: docker://ppodgorsek/robot-framework
+        uses: docker://ppodgorsek/robot-framework
       - name: start
         run: |
-          docker run \
-            
-            
-            
+          python -m pip install --upgrade pip
