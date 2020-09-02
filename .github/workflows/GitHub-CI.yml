@@ -98,3 +98,16 @@ jobs:
         with:
           collection: ${{ github.workspace }}/test/testapi.json
           reporters: cli
+          
+  # Grafana power
+  grafanaRun:
+    name: Grafana dashboard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: frankie567/grafana-annotation-action@v1.0.2
+        with:
+          apiHost: https://procesor2017.grafana.net/
+          apiToken: ${{ secrets.GRAFANA_API_TOKEN }}
+          text: Deployment of ${{ github.sha }}
+          dashboardId: 1
+          tags: deployment,github
