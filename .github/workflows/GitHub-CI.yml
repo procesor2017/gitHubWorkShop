@@ -98,3 +98,25 @@ jobs:
         with:
           collection: ${{ github.workspace }}/test/testapi.json
           reporters: cli
+  
+  #RobotFramework example how to create simple report, upload artefact etc.
+  rfStartTestInDocker:
+    name: Start RF test in docker and upload results to folder
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Start test
+      run: |
+        docker run --shm-size=1g \
+        -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/reports:Z \
+        -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/tests:Z \
+        -e BROWSER=chrome \
+        --user=1001:1001 \
+        ppodgorsek/robot-framework:latest
+    - name: Upload test results
+      uses: actions/upload-artifact@v1
+      if: always()
+      with:
+        name: reports
+        path: ${{ github.workspace }}/test/RobotFrameWork
+   
