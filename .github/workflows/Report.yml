@@ -47,4 +47,5 @@ jobs:
           --variable RP_ENDPOINT:${{ secrets.ENDPOINT }} \
           --variable RP_LAUNCH:${{ secrets.LAUNCH }} \
           --variable RP_PROJECT:${{ secrets.PROJECT }} \
+          --variable BROWSER:Chrome \
           test/RobotFrameWork/tc.robot
