@@ -43,11 +43,4 @@ jobs:
         uses: GabrielBB/xvfb-action@v1.0
         with:
           run: |
-           python3 -m robot \
-           --listener robotframework_reportportal.listener \
-           --variable RP_UUID:${{ secrets.UUID }} \
-           --variable RP_ENDPOINT:${{ secrets.ENDPOINT }} \
-           --variable RP_LAUNCH:${{ secrets.LAUNCH }} \
-           --variable RP_PROJECT:${{ secrets.PROJECT }} \
-           --variable BROWSER:Chrome \
-           test/RobotFrameWork/tc.robot
+           python3 -m robot --listener robotframework_reportportal.listener --variable RP_UUID:${{ secrets.UUID }} --variable RP_ENDPOINT:${{ secrets.ENDPOINT }} --variable RP_LAUNCH:${{ secrets.LAUNCH }} --variable RP_PROJECT:${{ secrets.PROJECT }} --variable BROWSER:Chrome test/RobotFrameWork/tc.robot
