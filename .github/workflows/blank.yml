@@ -14,14 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.2
-        with:
-          run: |
-            docker pull reportportal/newman      
-            docker run -t reportportal/newman run ${{ github.workspace }}/test/testapi.json \
-            -r @reportportal/reportportal \
-            --reporter-@reportportal/reportportal-debug=true \
-            --reporter-@reportportal/reportportal-endpoint=http://portal.tesena.com/api/v1 \
-            --reporter-@reportportal/reportportal-token=${{ secrets.UUID }} \
-            --reporter-@reportportal/reportportal-launch=${{ secrets.LAUNCH }} \
-            --reporter-@reportportal/reportportal-project=${{ secrets.PROJECT }} \
-            -x
+      - name: Postman
+        run: |
+          docker pull reportportal/newman      
+          docker run -t reportportal/newman run ${{ github.workspace }}/test/testapi.json \
+          -r @reportportal/reportportal \
+          --reporter-@reportportal/reportportal-debug=true \
+          --reporter-@reportportal/reportportal-endpoint=http://portal.tesena.com/api/v1 \
+          --reporter-@reportportal/reportportal-token=${{ secrets.UUID }} \
+          --reporter-@reportportal/reportportal-launch=${{ secrets.LAUNCH }} \
+          --reporter-@reportportal/reportportal-project=${{ secrets.PROJECT }} \
+          -x
