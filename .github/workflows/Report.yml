@@ -4,8 +4,10 @@ name: Report
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '*/15 * * * *'
-
+    - cron:  '* 1 * * *'
+  push:
+    branches: 
+      - master
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   testToReportPortal:
@@ -45,3 +47,21 @@ jobs:
         with:
           run: |
            python3 -m robot --listener robotframework_reportportal.listener --variable RP_UUID:${{ secrets.UUID }} --variable RP_ENDPOINT:${{ secrets.ENDPOINT }} --variable RP_LAUNCH:${{ secrets.LAUNCH }} --variable RP_PROJECT:${{ secrets.PROJECT }} --variable BROWSER:Chrome test/RobotFrameWork/tc.robot
+  postmanDockerRun:
+    name: Postman test with report # Docker Power
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker for RF
+        run: |      
+          docker run -t reportportal/newman run https://www.getpostman.com/collections/8a0c9bc08f062d12dcda \
+          -r @reportportal/reportportal \
+          --reporter-@reportportal/reportportal-debug=true \
+          --reporter-@reportportal/reportportal-endpoint=${{ secrets.ENDPOINT }} \
+          --reporter-@reportportal/reportportal-token=${{ secrets.UUID }} \
+          --reporter-@reportportal/reportportal-launch=${{ secrets.LAUNCH }} \
+          --reporter-@reportportal/reportportal-project=${{ secrets.PROJECT }} \
+          -x
+          
+      
+  
