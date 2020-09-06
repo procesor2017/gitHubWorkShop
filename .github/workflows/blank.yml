@@ -13,15 +13,15 @@ jobs:
     name: Postman test with report # Docker Power
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Docker for Postman
-        run: |
-          docker pull reportportal/newman      
-          docker run -t reportportal/newman run ${{ github.workspace }}/test/testapi.json \
-          -r @reportportal/reportportal \
-          --reporter-@reportportal/reportportal-debug=true \
-          --reporter-@reportportal/reportportal-endpoint=http://portal.tesena.com/api/v1 \
-          --reporter-@reportportal/reportportal-token=${{ secrets.UUID }} \
-          --reporter-@reportportal/reportportal-launch=${{ secrets.LAUNCH }} \
-          --reporter-@reportportal/reportportal-project=${{ secrets.PROJECT }} \
-          -x
+      - uses: actions/checkout@v2.3.2
+        with:
+          run: |
+            docker pull reportportal/newman      
+            docker run -t reportportal/newman run ${{ github.workspace }}/test/testapi.json \
+            -r @reportportal/reportportal \
+            --reporter-@reportportal/reportportal-debug=true \
+            --reporter-@reportportal/reportportal-endpoint=http://portal.tesena.com/api/v1 \
+            --reporter-@reportportal/reportportal-token=${{ secrets.UUID }} \
+            --reporter-@reportportal/reportportal-launch=${{ secrets.LAUNCH }} \
+            --reporter-@reportportal/reportportal-project=${{ secrets.PROJECT }} \
+            -x
