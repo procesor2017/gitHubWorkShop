@@ -17,7 +17,7 @@ jobs:
       - name: Docker for Postman
         run: |
           docker pull reportportal/newman      
-          docker run -t reportportal/newman run https://www.getpostman.com/collections/8a0c9bc08f062d12dcda \
+          docker run -t reportportal/newman run ${{ github.workspace }}/test/testapi.json \
           -r @reportportal/reportportal \
           --reporter-@reportportal/reportportal-debug=true \
           --reporter-@reportportal/reportportal-endpoint=http://portal.tesena.com/api/v1 \
