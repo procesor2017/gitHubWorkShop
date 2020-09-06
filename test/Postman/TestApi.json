@@ -1,0 +1,52 @@
+{
+	"info": {
+		"_postman_id": "4b579b05-d469-4640-8d57-d0a3fa8d2f89",
+		"name": "TestApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SuperHeroes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "18108fce-6932-4bb3-a5c5-012cef566303",
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const body = pm.response.json();\r",
+							"pm.test(\"Expects the customer ID to be 12\", function() {\r",
+							"    pm.expect(body).to.have.property(\"Best Super hero\", 'Batman');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://procesor2017.github.io/gitHubWorkShop/under/api.json",
+					"protocol": "https",
+					"host": [
+						"procesor2017",
+						"github",
+						"io"
+					],
+					"path": [
+						"gitHubWorkShop",
+						"under",
+						"api.json"
+					]
+				},
+				"description": "asd"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
