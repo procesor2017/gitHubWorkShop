@@ -1,6 +1,6 @@
 name: GitHub-CI
 on: 
-  [push]
+  [pull_request]  #[push]
 
 # Jednoduchý příklad pro vypsání Ahoj :-)
 jobs:
