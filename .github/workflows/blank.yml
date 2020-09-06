@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  postmanDockerRun:
+    name: Postman test with report # Docker Power
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker for RF
+        run: |      
+          docker run -t reportportal/newman run https://www.getpostman.com/collections/8a0c9bc08f062d12dcda \
+          -r @reportportal/reportportal \
+          --reporter-@reportportal/reportportal-debug=true \
+          --reporter-@reportportal/reportportal-endpoint=${{ secrets.ENDPOINT }} \
+          --reporter-@reportportal/reportportal-token=${{ secrets.UUID }} \
+          --reporter-@reportportal/reportportal-launch=${{ secrets.LAUNCH }} \
+          --reporter-@reportportal/reportportal-project=${{ secrets.PROJECT }} \
+          -x
