@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "test": "node main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@reportportal/agent-js-mocha": "^5.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^7.0.1",
+    "playwright": "1.3.0"
+  }
+}
