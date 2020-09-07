@@ -20,11 +20,11 @@ const Mocha = require('mocha');
 const mochaMain = new Mocha({
   reporter: '@reportportal/agent-js-mocha',
   reporterOptions: {
-    endpoint: process.env.endpoint,
-    token: process.env.token,
-    launch: process.env.launch,
-    project: process.env.project,
-    description: process.env.description
+    endpoint: ${process.env.endpoint},
+    token: ${process.env.token},
+    launch: ${process.env.launch},
+    project: ${process.env.project},
+    description: ${process.env.description}
   },
   timeout: 250000
 });
