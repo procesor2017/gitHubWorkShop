@@ -10,18 +10,19 @@ on:
 
 jobs:
   postmanDockerRun:
-    name: Postman test with report # Docker Power
+    name: Playwright 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.2
-      - name: Postman
+      - name: Playwright
         run: |
-          docker pull reportportal/newman      
-          docker run -t reportportal/newman run https://raw.githubusercontent.com/procesor2017/gitHubWorkShop/master/test/Postman/TestApi.json \
-          -r @reportportal/reportportal \
-          --reporter-@reportportal/reportportal-debug=true \
-          --reporter-@reportportal/reportportal-endpoint=http://portal.tesena.com/api/v1 \
-          --reporter-@reportportal/reportportal-token=${{ secrets.UUID }} \
-          --reporter-@reportportal/reportportal-launch=${{ secrets.LAUNCH }} \
-          --reporter-@reportportal/reportportal-project=${{ secrets.PROJECT }} \
-          -x
+          cd ${{ github.workspace }}/test/playwright
+          npm install
+          npm test
+        env:
+          endpoint: ${{ secrets.ENDPOINT }}
+          token: ${{ secrets.UUID }}
+          launch: ${{ secrets.LAUNCH }}
+          project: ${{ secrets.PROJECT }}
+          description: Test from github actions
+
