@@ -25,6 +25,7 @@ jobs:
           echo ahoj $endpoint
           cd ${{ github.workspace }}/test/playwright
           npm install
+          npm update
           npm test
 
 
