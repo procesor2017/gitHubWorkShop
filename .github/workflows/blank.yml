@@ -13,11 +13,11 @@ jobs:
     name: Playwright 
     runs-on: ubuntu-latest
     env:
-      endpoint: ${{ secrets.ENDPOINT }}
-      token: ${{ secrets.UUID }}
-      launch: ${{ secrets.LAUNCH }}
-      project: ${{ secrets.PROJECT }}
-      description: Test from github actions
+      endpoint:${{ secrets.ENDPOINT }}
+      token:${{ secrets.UUID }}
+      launch:${{ secrets.LAUNCH }}
+      project:${{ secrets.PROJECT }}
+      description:Test from github actions
     steps:
       - uses: actions/checkout@v2.3.2
       - name: Playwright
