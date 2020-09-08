@@ -13,7 +13,7 @@ jobs:
     name: Playwright 
     runs-on: ubuntu-latest
     env:
-      endpoint: ${{ secrets.ENDPOINT }}
+      endpoint: http://portal.tesena.com/api/v1
       token: ${{ secrets.UUID }}
       launch: ${{ secrets.LAUNCH }}
       project: ${{ secrets.PROJECT }}
