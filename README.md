@@ -2,6 +2,7 @@
 
 ![GitHub-CI](https://github.com/procesor2017/gitHubWorkShop/workflows/GitHub-CI/badge.svg)
 <img src="https://img.shields.io/github/license/procesor2017/gitHubWorkShop?style=plastic"></img>
+![Report](https://github.com/procesor2017/gitHubWorkShop/workflows/Report/badge.svg)
 --------------------
 
 # Info
