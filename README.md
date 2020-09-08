@@ -18,6 +18,7 @@ Tools:
  - [Speed.IO](https://www.speed.io/)
 
 ## Github Actions
+### Github-CI
 For building and starting tools I using GitHub Actions. Everything for GitHub Actions is setup in .github/workflows/GitHub-CI.yml
 Example for starting RF in docker:
 
@@ -35,6 +36,27 @@ robotWebTest:
           -e BROWSER=chrome \
           --user=1001:1001 \
           ppodgorsek/robot-framework:latest
+```
+### Report CI
+For reporting We are using [reportportal](https://reportportal.io/). How we pull reports log you can see in .github/workflows/Report.yml
+Example how to report from Postaman (Docker include):
+```
+  postmanDockerRun:
+    name: Postman test with report # Docker Power
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.2
+      - name: Postman
+        run: |
+          docker pull reportportal/newman      
+          docker run -t reportportal/newman run https://raw.githubusercontent.com/procesor2017/gitHubWorkShop/master/test/Postman/TestApi.json \
+          -r @reportportal/reportportal \
+          --reporter-@reportportal/reportportal-debug=true \
+          --reporter-@reportportal/reportportal-endpoint=http://portal.tesena.com/api/v1 \
+          --reporter-@reportportal/reportportal-token=${{ secrets.UUID }} \
+          --reporter-@reportportal/reportportal-launch=${{ secrets.LAUNCH }} \
+          --reporter-@reportportal/reportportal-project=${{ secrets.PROJECT }} \
+          -x
 ```
 
 ## Best link 
