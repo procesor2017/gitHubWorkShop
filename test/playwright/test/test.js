@@ -5,7 +5,7 @@ const BASE_URL = 'https://procesor2017.github.io/gitHubWorkShop/'
 
 let page, browser, context
 
-describe('Try to do something', () => {
+describe('TC- For checking Klingon', () => {
 
     beforeEach(async () => {
         browser = await playwright['chromium'].launch()
@@ -17,7 +17,7 @@ describe('Try to do something', () => {
         await browser.close()
     })
 
-    it('Find language', async() => {
+    it('Find klingon', async() => {
         await page.goto('https://procesor2017.github.io/gitHubWorkShop/');
         await page.fill('[name=user]', 'tesena');
         await page.type('[name=password]', 'tesena');
