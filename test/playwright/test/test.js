@@ -2,6 +2,9 @@ const playwright = require('playwright')
 const chai = require('chai')
 const expect = chai.expect
 const BASE_URL = 'https://procesor2017.github.io/gitHubWorkShop/'
+const url = 'https://procesor2017.github.io/gitHubWorkShop/under/api.json'
+
+const https = require("https");
 
 let page, browser, context
 
@@ -24,5 +27,21 @@ describe('TC- For checking Klingon', () => {
         await page.click('[type=submit]');
         klingon = await page.waitForSelector('[id=klingon]');
         expect(klingon).to.exist;
+    })
+})
+
+describe('TC- Api Connect', () => {
+    it('Check if author is Jan Egermaier', async() => {
+        https.get(url, res => {
+            res.setEncoding("utf8");
+            let body = "";
+            res.on("data", data => {
+              body += data;
+            });
+            res.on("end", () => {
+              body = JSON.parse(body);
+              expect(body.author).to.equal('Jan Egermaier');
+            });
+        });
     })
 })
