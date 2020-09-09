@@ -79,6 +79,6 @@ jobs:
           cd ${{ github.workspace }}/test/playwright
           npm install
           npm update
-          npm tes          
+          npm test
       
   
