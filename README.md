@@ -16,6 +16,8 @@ Tools:
  - [Sonarqube](https://www.sonarqube.org/)
  - [Postman](https://www.postman.com/)
  - [Speed.IO](https://www.speed.io/)
+ - [Mocha](https://mochajs.org/)
+ - [Playwright](https://github.com/microsoft/playwright) 
 
 ## Github Actions
 ### Github-CI
