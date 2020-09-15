@@ -23,7 +23,7 @@ jobs:
           cd ${{ github.workspace }}/test/k6
           k6 run loadtest.js
       - name: Try to start mocha and k6
-          run: | 
-            cd ${{ github.workspace }}/test/k6
-            npm test
+        run: | 
+          cd ${{ github.workspace }}/test/k6
+          npm test
   
