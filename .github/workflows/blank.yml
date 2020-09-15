@@ -22,7 +22,7 @@ jobs:
         run: | 
           cd ${{ github.workspace }}/test/k6
           npm install --save-dev jsonjunit
-          k6 run -out json=test.json loadtest.js
+          k6 run --out json=test.json loadtest.js
           node_modules/.bin/jsonjunit --json ${{ github.workspace }}/test/k6/test.json --junit ${{ github.workspace }}/test/k6/junit.xml
           ls junit.xml
           zip junit.zip junit.xml
