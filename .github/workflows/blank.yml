@@ -26,7 +26,6 @@ jobs:
           ls junit.xml
           zip junit.zip junit.xml
           curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' --header 'Authorization: bearer ${{ secrets.UUID }}' -F file=@junit.zip 'http://portal.tesena.com/api/v1/JAN_EGERMAIER_PERSONAL/launch/import'
-          {"msg":"Launch with id = 001 is successfully imported."}
 
       - name: Try to start mocha and k6
         run: | 
