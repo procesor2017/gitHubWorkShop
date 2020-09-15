@@ -41,6 +41,7 @@ robotWebTest:
 ```
 ### Report CI
 For reporting We are using [reportportal](https://reportportal.io/). How we pull reports log you can see in .github/workflows/Report.yml
+(Workflow Report-CI should be fail, because we want have more interest report in report portal than just pass. So this workflow shutdown on playwright test)
 Example how to report from Postaman (Docker include):
 ```
   postmanDockerRun:
