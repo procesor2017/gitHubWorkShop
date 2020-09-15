@@ -1,0 +1,11 @@
+{
+    "scripts": {
+      "test": "k6 run loadtest.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "chai": "^4.2.0",
+      "mocha": "^7.0.1"
+    }
+  }

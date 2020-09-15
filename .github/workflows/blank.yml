@@ -1,0 +1,24 @@
+name: blank
+
+# Běh každou hodinu
+on:
+  push:
+    branches: 
+      - master
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  k6:
+    runs-on: ubuntu-latest
+    name: Start install
+    steps:
+      - name: Install
+        run: |
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+          echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
+          sudo apt-get update
+          sudo apt-get install k6
+      - name: try to start just k6
+        run: k6 run loadtest.js
+      - name: Try to start mocha and k6
+        run: npm test
+  
