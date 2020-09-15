@@ -2,7 +2,7 @@ name: GitHub-CI
 on: 
   [pull_request]  #[push]
 
-# Jednoduchý příklad pro vypsání Ahoj :-)
+# Simple example for write Ahoj Batman :-)
 jobs:
   build:
     name: Vítej
@@ -14,23 +14,23 @@ jobs:
           who-to-greet: 'Batman'
         id: ahoj
 
-  # Startujeme RF test na API = Ukázka instalace pythonu a dalších závislostí.
+  # Test APi with Robot Framework
   robotApiTest:
     name: robotApiTest
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    # Run on ubutnu
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2   # Import repository to workflow directory 
       - name: Install requirements
-        run: |
-          python -m pip install --upgrade pip
+        run: |                      # Using python
+          python -m pip install --upgrade pip   
           pip install robotframework
           pip install robotframework-seleniumlibrary
           pip install robotframework-requests 
-      - name: Start test
+      - name: Start test          # Start Api test
         run: | 
           python -m robot -i api test/RobotFrameWork/tc.robot
 
-  # Docker and robot framework =Využíté Dockeru
+  # Docker and robot framework =Using docker in Github Action with docker Run
   robotWebTest:
     name: robotWebTest
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
           --user=1001:1001 \
           ppodgorsek/robot-framework:latest
           
-  #K6 Load Test = Využítí již před přiravených actions
+  #K6 Load Test = Using Actions from github market place
   loadTest:
     name: k6 Load Test
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
           filename: ${{ github.workspace }}/test/k6/loadtest.js
           flags: --vus 50 --duration 10s
   
-  # Code quality = Ukázka využítí secrets
+  # Code quality = Shows how to use github secrets
   codeQuality:
     name: Code Quality test
     runs-on: ubuntu-latest
@@ -72,7 +72,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  #WebPage speed = Spouští se pouze pokud passne loadTest
+  #WebPage speed = Shows how to start some test if pass loadTest before
   webPageSpeed:
     needs: [loadTest]
     name: Speed.io0
@@ -86,7 +86,7 @@ jobs:
            sitespeedio/sitespeed.io https://procesor2017.github.io/gitHubWorkShop/ \
            -n 1 -b chrome
 
-  #Postman RUN
+  #Postman RUN in docker
   postmanRun:
     name: Postman run [NewMan CLI]
     runs-on: ubuntu-latest
@@ -137,6 +137,7 @@ jobs:
           npm install
           npm update
           npm test
+  # Git leaks can controll your push         
   gitleaks:
     runs-on: ubuntu-latest
     steps:
