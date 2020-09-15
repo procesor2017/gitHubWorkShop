@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Start install
     steps:
+      - uses: actions/checkout@v2
       - name: Install
         run: |
           sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
@@ -18,7 +19,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install k6
       - name: try to start just k6
-        run: k6 run loadtest.js
+        run: | 
+          cd ${{ github.workspace }}/test/k6
+          k6 run loadtest.js
       - name: Try to start mocha and k6
-        run: npm test
+          run: | 
+            cd ${{ github.workspace }}/test/k6
+            npm test
   
