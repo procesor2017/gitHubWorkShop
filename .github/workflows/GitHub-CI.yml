@@ -137,3 +137,9 @@ jobs:
           npm install
           npm update
           npm test
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: gitleaks-action
+      uses: zricethezav/gitleaks-action@master
