@@ -20,12 +20,12 @@ jobs:
           sudo apt-get install k6
       - name: try to start just k6
         run: | 
-          npm install -g k6-to-junit
+          npm install k6-to-junit
           cd ${{ github.workspace }}/test/k6
           k6 run loadtest.js | k6-to-junit junit.xml
           ls junit.xml
           zip junit.zip junit.xml
-          curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' --header 'Authorization: bearer ${{ secrets.UUID }}' -F file=@foo.zip 'http://portal.tesena.com/api/v1/JAN_EGERMAIER_PERSONAL/launch/import'
+          curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' --header 'Authorization: bearer ${{ secrets.UUID }}' -F file=@junit.zip 'http://portal.tesena.com/api/v1/JAN_EGERMAIER_PERSONAL/launch/import'
           {"msg":"Launch with id = 001 is successfully imported."}
 
       - name: Try to start mocha and k6
