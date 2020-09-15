@@ -23,7 +23,7 @@ jobs:
           cd ${{ github.workspace }}/test/k6
           npm install --save-dev jsonjunit
           k6 run --out json=test.json loadtest.js
-          node_modules/.bin/jsonjunit --json ${{ github.workspace }}/test/k6/test.json --junit ${{ github.workspace }}/test/k6/junit.xml
+          node_modules/.bin/jsonjunit --json ${{ github.workspace }}/test/k6/ --junit ${{ github.workspace }}/test/k6/junit.xml
           ls junit.xml
           zip junit.zip junit.xml
           curl -X POST --header 'Content-Type: multipart/form-data' --header 'Accept: application/json' --header 'Authorization: bearer ${{ secrets.UUID }}' -F file=@junit.zip 'http://portal.tesena.com/api/v1/JAN_EGERMAIER_PERSONAL/launch/import'
