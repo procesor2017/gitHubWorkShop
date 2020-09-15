@@ -20,8 +20,8 @@ jobs:
           sudo apt-get install k6
       - name: try to start just k6
         run: | 
-          npm install k6-to-junit
           cd ${{ github.workspace }}/test/k6
+          npm install k6-to-junit
           k6 run loadtest.js | k6-to-junit junit.xml
           ls junit.xml
           zip junit.zip junit.xml
