@@ -1,7 +1,6 @@
 name: GitHub-CI
 on: 
   [push]
-
 # Simple example for write Ahoj Batman :-)
 jobs:
   build:
