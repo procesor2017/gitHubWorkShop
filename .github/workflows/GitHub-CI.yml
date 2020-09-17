@@ -1,6 +1,6 @@
 name: GitHub-CI
 on: 
-  [pull_request]  #[push]
+  [push]
 
 # Simple example for write Ahoj Batman :-)
 jobs:
