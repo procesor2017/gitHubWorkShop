@@ -45,25 +45,3 @@ describe('TC- Api Connect', () => {
         });
     })
 })
-
-describe('TC- Fail For Example', () => {
-
-    beforeEach(async () => {
-        browser = await playwright['chromium'].launch()
-        context = await browser.newContext()
-        page = await context.newPage(BASE_URL)
-    })
-
-    afterEach(async function() {
-        await browser.close()
-    })
-
-    it('Find free for all', async() => {
-        await page.goto('https://procesor2017.github.io/gitHubWorkShop/');
-        await page.fill('[name=user]', 'tesena');
-        await page.type('[name=password]', 'tesena');
-        await page.click('[type=submit]');
-        klingon = await page.waitForSelector('[id=freeforall]');
-        expect(klingon).to.exist;
-    })
-})
