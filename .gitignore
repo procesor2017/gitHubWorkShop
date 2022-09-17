@@ -1,0 +1,4 @@
+test/playwright/node_modules
+test/RobotFrameWork/log.html
+test/RobotFrameWork/report.html
+test/RobotFrameWork/output.xml
