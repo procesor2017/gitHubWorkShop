@@ -16,7 +16,8 @@ Tools:
  - [Sonarqube](https://www.sonarqube.org/)
  - [Postman](https://www.postman.com/)
  - [Speed.IO](https://www.speed.io/)
-
+ - [PlayWright](https://playwright.dev/)
+ 
 ## Github Actions
 ### Github-CI
 For building and starting tools I using GitHub Actions. Everything for GitHub Actions is setup in .github/workflows/GitHub-CI.yml
