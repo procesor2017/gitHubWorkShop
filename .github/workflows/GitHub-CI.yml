@@ -1,6 +1,6 @@
 name: GitHub-CI
 on: 
-  [push]
+  [push, workflow_dispatch]
 # Simple example for write Ahoj Batman :-)
  
 jobs:
