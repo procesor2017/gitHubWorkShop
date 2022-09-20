@@ -36,6 +36,31 @@ jobs:
         # You may pin to the exact commit or the version.
         # uses: gitleaks/gitleaks-action@5425999620c418539c61a8143f29e346d5f6cf08
         uses: gitleaks/gitleaks-action@v2.2.0
+  
+  k6LoadTest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: k6 Load Test
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: ${{ github.workspace }}/test/k6/loadtest.js
+          flags: --vus 50 --duration 10s
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
