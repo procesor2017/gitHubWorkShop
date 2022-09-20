@@ -72,7 +72,21 @@ jobs:
           npm install
           npm update
           npm test
-        
+          
+  robotFrameWorkWeb:
+    name: RF - FrontEnd
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v2
+      - name: Run Robot
+        run: |
+          docker run --shm-size=1g \
+          -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/reports:Z \
+          -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/tests:Z \
+          -e BROWSER=chrome \
+          --user=1001:1001 \
+          ppodgorsek/robot-framework:latest
     
         
         
