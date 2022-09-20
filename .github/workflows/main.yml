@@ -1,0 +1,10 @@
+name: TryPipeline
+on:
+  [push, workflow_dispatch]
+  
+jobs:
+  bestHero:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "Batman"
