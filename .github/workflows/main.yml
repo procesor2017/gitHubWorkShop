@@ -18,4 +18,15 @@ jobs:
         run: |
           python -m robot -i api test/RobotFrameWork/tc.robot
           
+  postman:
+    name: Postman - Run test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v2
+      - name: Run NewMan
+        run: |
+          docker pull reportportal/newman      
+          docker run -t reportportal/newman run https://raw.githubusercontent.com/procesor2017/gitHubWorkShop/master/test/Postman/TestApi.json
+          
           
