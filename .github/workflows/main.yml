@@ -8,3 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: echo "Batman"
+
+  justiceLeague:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "Batman, Superman, WW, Flash, Green Lantern"
