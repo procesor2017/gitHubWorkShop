@@ -28,5 +28,14 @@ jobs:
         run: |
           docker pull reportportal/newman      
           docker run -t reportportal/newman run https://raw.githubusercontent.com/procesor2017/gitHubWorkShop/master/test/Postman/TestApi.json
-          
-          
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Gitleaks
+        # You may pin to the exact commit or the version.
+        # uses: gitleaks/gitleaks-action@5425999620c418539c61a8143f29e346d5f6cf08
+        uses: gitleaks/gitleaks-action@v2.2.0
+        
+        
+        
+        
